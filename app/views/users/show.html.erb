@@ -18,13 +18,14 @@
     <%= f.submit 'Create Book' %>
   <% end %>
 
-<h1>Book detail</h1>
+<h1>Books</h1>
+<% @books.each do |book| %>
 <div>
-  <%= image_tag @book.get_profile_image %>
-  <p><%= @book.user.name %></p><!-- 後でuserページ(マイページ)に遷移するリンクを付ける-->
-  <p>Title：<%= @book.title %></p><!--Book detailに遷移するリンクを付ける-->
-  <p>Opinion：<%= @book.body %></p>
-  <% if @book.user == current_user %>
-    <%= link_to "Destroy", book_path(@book), method: :delete %>
+  <%= link_to user_path(book.user.id) do %>
+  <%= image_tag book.get_profile_image %>
   <% end %>
+  <p><%#　ここはいらないかも？　= image_tag 'no_image.jpg' %></p>
+  <p>Title：<%= book.title %></p>
+  <p>Opinion：<%= book.body %></p>
 </div>
+<% end %>
