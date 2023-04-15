@@ -4,7 +4,7 @@
   <p><%#　ここはいらないかも？　= image_tag 'no_image.jpg' %></p>
   <p>Name：<%#= user_name %></p>
   <p>Introduction：<%#=  %></p>
-  <% if @user. == current_user.id %>
+  <% if @user == current_user.id %>
     <p><%= link_to "歯車ボタン", edit_user_path(@user) %></p>
   <% end %>
 </div>

@@ -1,10 +1,10 @@
 <h1>User info</h1>
 <div>
-  <%#= image_tag users.get_profile_image %>
+  <%= image_tag @book.get_profile_image %>
   <p><%#　ここはいらないかも？　= image_tag 'no_image.jpg' %></p>
-  <p>Name：<%#= user_name %></p>
-  <p>Introduction：<%#=  %></p>
-  <% if @user.id == current_user.id %>
+  <p>Name：<%= @book.user.name %></p>
+  <p>Introduction：<%#= @book.introduction %></p>
+  <% if @user == current_user.id %>
     <p><%= link_to "歯車ボタン", edit_user_path(@user) %></p>
   <% end %>
 </div>
@@ -21,9 +21,11 @@
 <h1>Book detail</h1>
 <div>
   <%= image_tag @book.get_profile_image %>
-  <p><%= @book.user.name %></p><!-- 後でuserページ(マイページ)に遷移するリンクを付ける-->
-  <p>Title：<%= @book.title %></p><!--Book detailに遷移するリンクを付ける-->
-  <p>Opinion：<%= @book.body %></p>
+  <%= link_to user_path(current_user.id) do %>
+  <%= @book.user.name %>
+  <% end %><!-- 後でuserページ(マイページ)に遷移するリンクを付ける-->
+  <p><%= link_to @book.title %></p><!--Book detailに遷移するリンクを付ける-->
+  <p><%= @book.body %></p>
   <% if @book.user == current_user %>
     <%= link_to "Destroy", book_path(@book), method: :delete %>
   <% end %>
