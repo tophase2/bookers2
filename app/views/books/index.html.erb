@@ -1,10 +1,9 @@
 <h1>User info</h1>
 <div>
-  <%= image_tag @book.get_profile_image %>
-  <p><%#　ここはいらないかも？　= image_tag 'no_image.jpg' %></p>
-  <p>Name：<%#= user_name %></p>
-  <p>Introduction：<%#=  %></p>
-  <% if @user == current_user.id %>
+  <%= image_tag @user.get_profile_image(100, 100) %>
+  <p>Name：<%= @user.name %></p>
+  <p>Introduction：<%= @user.introduction %></p>
+  <% if @user.id == current_user.id %>
     <p><%= link_to "歯車ボタン", edit_user_path(@user) %></p>
   <% end %>
 </div>
@@ -21,8 +20,7 @@
 <h1>Books</h1>
   <% @books.each do |book| %>
 <div>
-  <%= image_tag book.get_profile_image %>
-  <p><%#　ここはいらないかも？　= image_tag 'no_image.jpg' %></p>
+  <%= image_tag book.get_profile_image(100, 100) %>
   <p>Title：<%= book.title %></p>
   <p>Opinion：<%= book.body %></p>
 </div>
