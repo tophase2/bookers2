@@ -7,14 +7,3 @@
     <p><%= link_to "歯車ボタン", edit_user_path(@user) %></p>
   <% end %>
 </div>
-
-<%= render 'books/booklist' %>
-
-<h1>Books</h1>
-<% @books.each do |book| %>
-<div>
-  <%= image_tag book.get_profile_image(100, 100) %>
-  <p>Title：<%= book.title %></p>
-  <p>Opinion：<%= book.body %></p>
-</div>
-<% end %>
