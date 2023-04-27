@@ -1,14 +1,30 @@
-<h1>User info</h1>
-<div>
+<p id="notice"></p>
+
+<div class="container px-5 px-sm-0">
+ <div class="row">
+  <div class="col-md-3">
+      
+  <h2>User info</h2>
+
   <%= image_tag @user.get_profile_image(100, 100) %>
+  <table class="table">
   <p>Name：<%= @user.name %></p>
   <p>Introduction：<%= @user.introduction %></p>
+  </table>
+  
+  <div class="row">
   <% if @user.id == current_user.id %>
-    <p><%= link_to "歯車ボタン", edit_user_path(@user) %></p>
+    <%= link_to edit_user_path(@user), class: "btn btn-block btn-outline-secondary" do %>
+     <i class="fas fa-user-cog"></i>
+    <% end %>
   <% end %>
-</div>
+  </div>
 
 <%= render 'books/booklist' %>
+
+</div>
+
+<div class="col-md-8 offset-md-1">
 
 <h1>Books</h1>
 <% @books.each do |book| %>
@@ -18,3 +34,8 @@
   <p>Opinion：<%= book.body %></p>
 </div>
 <% end %>
+
+   
+  </div>
+ </div>
+</div>
