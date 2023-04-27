@@ -4,13 +4,20 @@
  <div class="row">
   <div class="col-md-3">
       
-  <h2>User info</h2>
+   <h2>User info</h2>
 
-  <%= image_tag @user.get_profile_image(100, 100) %>
-  <table class="table">
-  <p>Name：<%= @user.name %></p>
-  <p>Introduction：<%= @user.introduction %></p>
-  </table>
+   <%= image_tag @user.get_profile_image(100, 100) %>
+   <table class="table">
+    <tbody>
+     <tr></tr>
+      <tr>
+       <th>Name</th><th><%= @user.name %></th>
+      </tr>
+      <tr>
+       <th>Introduction</th><th><%= @user.introduction %></th>
+      </tr>
+    </tbody>
+   </table>
   
   <div class="row">
   <% if @user.id == current_user.id %>
@@ -26,16 +33,32 @@
 
 <div class="col-md-8 offset-md-1">
 
-<h1>Books</h1>
-<% @books.each do |book| %>
-<div>
-  <%= image_tag book.get_profile_image(100, 100) %>
-  <p>Title：<%= book.title %></p>
-  <p>Opinion：<%= book.body %></p>
-</div>
-<% end %>
-
-   
+<h2>Books</h2>
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @books.each do |book| %>
+   <tr>
+      <td><%= image_tag book.get_profile_image(100, 100) %></td>
+      <td>
+        <%= link_to book do %>
+        <%= book.title %>
+        <% end %>
+      </td>
+      <td><%= book.body %></td>
+   </tr>
+   <% end %>
+  </tbody>
+</table>
+  
   </div>
  </div>
 </div>

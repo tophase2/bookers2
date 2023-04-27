@@ -1,4 +1,13 @@
-<% if @user.errors.any? %>
+
+
+<p id="notice"></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>User info</h2>
+      
+  <% if @user.errors.any? %>
   <%= @user.errors.count %> errors prohibited this obj from being saved:
   <ul>
     <% @user.errors.full_messages.each do |message| %>
@@ -6,14 +15,20 @@
     <% end %>
   </ul>
 <% end %>
-
-<h1>User info</h1>
-<%= form_with model: @user, method: :patch do |f| %>
-  <label for="inputName">Name</label>
+      
+  <%= form_with model: @user, method: :patch do |f| %>
+  
+  <p>Name</p>
   <%= f.text_field :name, autofocus: true, id:"inputName" %>
-  <label for="inputImage">Image</label>
+  
+  <p>Image</p>
   <%= f.file_field :profile_image, accept: "image/*" %>
-  <label for="inputIntroduction">Introduction</label>
+  
+  <p>Introduction</p>
   <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %>
-  <%= f.submit "Update User" %>
+  
+  <p><%= f.submit "Update User", class: "btn btn-secondary" %></p>
 <% end %>
+    </div>
+  </div>
+</div>

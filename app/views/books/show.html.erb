@@ -1,17 +1,37 @@
+<p id="notice"></p>
+
+<div class="container px-5 px-sm-0">
+ <div class="row">
+  <div class="col-md-3">
+
 <%= render 'users/userlist' %>
 
 <%= render 'booklist' %>
 
-<h1>Book detail</h1>
-<div>
-  <%= image_tag @book.get_profile_image(100, 100) %>
-  <%= link_to user_path(current_user.id) do %>
-  <%= @book.user.name %>
-  <% end %><!-- 後でuserページ(マイページ)に遷移するリンクを付ける-->
-  <p><%= link_to @book.title %></p><!--Book detailに遷移するリンクを付ける-->
-  <p><%= @book.body %></p>
-  <% if @book.user == current_user %>
-    <%= link_to "Edit", edit_book_path(@book) %>
-    <%= link_to "Destroy", book_path(@book), method: :delete %>
-  <% end %>
+</div>
+
+<div class="col-md-8 offset-md-1">
+
+<h2>Book detail</h2>
+<table class="table">
+  <tbody>
+    <tr>
+      <td>
+        <%= image_tag @book.get_profile_image(100, 100) %>
+        <%= link_to user_path(current_user.id) do %>
+         <p><%= @book.user.name %></p>
+        <% end %>
+      </td>
+      <td><%= link_to @book.title %></td>
+      <td><%= @book.body %></td>
+        <% if @book.user == current_user %>
+      <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-success" %></td>
+      <td><%= link_to "Destroy", book_path(@book), method: :delete, class: "btn btn-danger" %></td>
+        <% end %>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+ </div>
 </div>

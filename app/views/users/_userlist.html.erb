@@ -1,12 +1,17 @@
+<h2>User info</h2>
 
-      
-  <h2>User info</h2>
-
-  <%= image_tag @user.get_profile_image(100, 100) %>
-  <table class="table">
-  <p>Name：<%= @user.name %></p>
-  <p>Introduction：<%= @user.introduction %></p>
-  </table>
+   <%= image_tag @user.get_profile_image(100, 100) %>
+   <table class="table">
+    <tbody>
+     <tr></tr>
+      <tr>
+       <th>Name</th><th><%= @user.name %></th>
+      </tr>
+      <tr>
+       <th>Introduction</th><th><%= @user.introduction %></th>
+      </tr>
+    </tbody>
+   </table>
   
   <div class="row">
   <% if @user.id == current_user.id %>
